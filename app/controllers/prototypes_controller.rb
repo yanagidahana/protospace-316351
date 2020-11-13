@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index 
-    @prototypes = Prototype.includes(:user).order("created_at DESC")
+    @prototypes = Prototype.includes(:user)
   end
 
   def new
@@ -39,10 +39,10 @@ class PrototypesController < ApplicationController
   def destroy
     if @prototype.destroy
       redirect_to root_path
-      else
+    else
         redirect_to root_path
-      end
-   end
+    end
+  end
 
 
   private
